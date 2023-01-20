@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de Compra</title>
+</head>
+<body>
+    <div style="width: 1000px;height: 792px;font-family: Arial, Helvetica, sans-serif;padding: 30px;">
+        <div class="OrdenCompraHeader">
+            <img style="width: 180px;margin-top: -40px;" src="{{.Logo}}"/>
+            <h1 style="color:#F15A23;font-size: 50px;text-align: center;margin-top: -30px;margin-bottom: 40px;">Orden de Compra</h1>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <ul style="padding: 0px;font-size: 14px;">
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>Nombre:</strong> Sociedad de Servicios y Sistemas de Innovaciones WIT Spa. </li>
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>RUT:</strong> 76.211.132-2</li>
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>Giro:</strong> Actividades de Programación Informática</li>
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>Dirección:</strong> Estado 42, Of 305</li>
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>Comuna:</strong> Santiago</li>
+                            <li style="list-style: none;margin-bottom: 5px;"><strong>Correo:</strong> mslomp@wit-labs.com</li>
+                            <li style="list-style: none;margin-bottom: 5px;">             jdiaz@wit-labs.com</li>
+                        </ul>
+                    </td>
+                    <td style="font-size: 16px; text-align: right;">
+                        <!--<div><p style="margin-bottom: 5px;"><strong>Fecha:</strong> {{.Day}}  /  {{.Month}} /  {{.Year}}</p></div>-->
+                        <div><p style="margin-bottom: 5px;"><strong>Fecha:</strong> {{.Day}}  /  {{.Month}} /  {{.Year}}</p></div>
+                        <div><p style="margin-bottom: 5px;"><strong>N° de OC: {{.OCNum}}</strong></p></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="border-bottom: 1px solid #BBBBBB;"></div>
+        <div>
+            <h2 style="font-size: 16px;font-weight: 700;margin-top: 30px;background-color: #F15A23;color:#fff;padding: 10px;margin-bottom: 0px;">Antecedentes Proveedor o Contratista</h2>
+            <div style="border: 1px solid #BBBBBB;padding: 20px;">
+                <table style="font-size: 16px;width: 100%;">
+                    <tr>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">Nombre:</strong></td>
+                        <td>{{.Name}}</td>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">Dirección:</strong></td>
+                        <td>{{.Address}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">RUT:</strong></td>
+                        <td>{{.Rut}}</td>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">Comuna:</strong></td>
+                        <td>{{.Town}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">Giro:</strong></td>
+                        <td>{{.CommBusiness}}</td>
+                        <td style="width: 50px;"><strong style="margin-bottom:15px ;">Correo:</strong></td>
+                        <td>{{.Email}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h2 style="font-size: 16px;font-weight: 700;margin-top: 30px;background-color: #F15A23;color:#fff;padding: 10px;margin-bottom: 0px;">Enviar factura a </h2>
+                <div style="border: 1px solid #BBBBBB;padding: 20px;margin-bottom: 30px;">
+                    <table style="font-size: 16px;width: 100%;">
+                        <tr>
+                            <td><strong>WIT-Labs</strong></td>
+                            <td><strong>Teléfono:</strong> 229742189</td>
+                            <td><strong>Correo: </strong> facturación@wit-labs.com</td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="detalleCompra">
+                <table style="border-spacing: 0ch;border-collapse: collapse;width: 100%;font-size: 16px;">
+                        <tr style="height: 28px;font-weight: bold;text-align: center;">
+                            <td style="border: 1px solid #BBBBBB"><p style="margin: 10px;">Item</p></td>
+                            <td style="border: 1px solid #BBBBBB;"><p style="margin: 10px;">Descripción</p></td>
+                            <td style="border: 1px solid #BBBBBB;"><p style="margin: 10px;">Cant.</p></td>
+                            <td style="border: 1px solid #BBBBBB;"><p style="margin: 10px;">Precio</p></td>
+                            <td style="border: 1px solid #BBBBBB;"><p style="margin: 10px;">Impuesto</p></td>
+                            <td style="border: 1px solid #BBBBBB;width: 70px;"><p style="margin: 10px;">Total</p></td>
+                        </tr>
+						{{range .Details}}
+							<tr>
+								<td style="border: 1px solid #BBBBBB;"><p style="margin: 5px;">{{.Item}}</p></td>
+								<td style="border: 1px solid #BBBBBB;"><p style="margin: 5px;">{{.Description}}</p></td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;"><p style="margin: 5px;">{{.Quantity}}</p></td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;"><p style="margin: 5px;">{{.Price}}</p></td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;"><p style="margin: 5px;">{{.Tax}}</p></td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;width: 70px;"><p style="margin: 5px;">{{.Total}}</p></td>
+							</tr>
+						{{end}}
+                </table>
+                <table style="float: right;border-spacing: 0ch;border-collapse: collapse;font-size: 16px;">
+                    <tr>
+                        <td>Neto </td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;border-top: none;text-align: right;"><p style="margin: 5px;">{{.NetValue}}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Iva 19%</td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;text-align: right;"><p style="margin: 5px;">{{.Tax}}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;text-align: right;"><p style="margin: 5px;">{{.Total}}</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

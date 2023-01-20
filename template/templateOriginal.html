@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de Compra</title>
+</head>
+<body>
+    <div style="width: 1000px;height: 792px;font-family: Arial, Helvetica, sans-serif;padding: 30px;">
+        <div class="OrdenCompraHeader">
+            <img style="width: 148px;margin-top: -40px;" src="{{.Logo}}"/>
+            <h1 style="color:#F15A23;font-size: 24px;text-align: center;margin-top: -30px;margin-bottom: 40px;">Orden de Compra</h1>
+            <ul style="padding: 0px;font-size: 11px;">
+                <li style="list-style: none;margin-bottom: 5px;">Nombre: Sociedad de Servicios y Sistemas de Innovaciones WIT Spa. </li>
+                <li style="list-style: none;margin-bottom: 5px;">RUT: 76.211.132-2</li>
+                <li style="list-style: none;margin-bottom: 5px;">Giro: Actividades de Programación Informática</li>
+                <li style="list-style: none;margin-bottom: 5px;">Dirección: Estado 42, Of 305</li>
+                <li style="list-style: none;margin-bottom: 5px;">Comuna: Santiago</li>
+                <li style="list-style: none;margin-bottom: 5px;">Correo: mslomp@wit-labs.com</li>
+                <li style="list-style: none;margin-bottom: 5px;">             jdiaz@wit-labs.com</li>
+            </ul>
+        </div>
+        <div style="display: -webkit-box;border-bottom: 1px solid #BBBBBB;-webkit-box-pack: justify;font-size: 12px;">
+            <div><p style="margin-bottom: 5px;"><strong>N° de OC: {{.OCNum}}</strong></p></div>
+            <div><p style="margin-bottom: 5px;"><strong>Fecha OC:</strong> {{.Day}}  /  {{.Month}} /  {{.Year}}</p></div>
+        </div>
+        <div>
+            <h2 style="font-size: 12px;font-weight: 700;margin-top: 30px;">Antecedentes Proveedor o Contratista</h2>
+            <div style="border: 1px solid #BBBBBB;padding: 10px;margin-bottom: 50px;">
+                <table style="font-size: 12px;width: 700px;">
+                    <tbody>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>Nombre:</strong></td>
+                            <td style=" width: 100%;">{{.Name}}</td>
+                        </tr>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>RUT:</strong></td>
+                            <td tyle=" width: 100%;">{{.Rut}}</td>
+                        </tr>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>Giro:</strong></td>
+                            <td tyle=" width: 100%;">{{.CommBusiness}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>Dirección:</strong></td>
+                            <td tyle=" width: 100%;">{{.Address}}</td>
+                        </tr>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>Comuna:</strong></td>
+                            <td tyle=" width: 100%;">{{.Town}}</td>
+                        </tr>
+                        <tr style="margin-bottom: 5px;">
+                            <td><strong>Correo:</strong></td>
+                            <td tyle=" width: 100%;">{{.Email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="detalleCompra">
+                <table style="border-spacing: 0ch;border-collapse: collapse;width: 100%;font-size: 12px;">
+                        <tr style="height: 28px;font-weight: bold;text-align: center;">
+                            <td style="border: 1px solid #BBBBBB;">Item</td>
+                            <td style="border: 1px solid #BBBBBB;">Descripción</td>
+                            <td style="border: 1px solid #BBBBBB;">Cant.</td>
+                            <td style="border: 1px solid #BBBBBB;">Precio</td>
+                            <td style="border: 1px solid #BBBBBB;">Impuesto</td>
+                            <td style="border: 1px solid #BBBBBB;width: 70px;">Total</td>
+                        </tr>
+						{{range .Details}}
+							<tr>
+								<td style="border: 1px solid #BBBBBB;">{{.Item}}</td>
+								<td style="border: 1px solid #BBBBBB;">{{.Description}}</td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;">{{.Quantity}}</td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;">{{.Price}}</td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;">{{.Tax}}</td>
+								<td style="border: 1px solid #BBBBBB;text-align: right;width: 70px;">{{.Total}}</td>
+							</tr>
+						{{end}}
+                </table>
+                <table style="float: right;border-spacing: 0ch;border-collapse: collapse;font-size: 12px;">
+                    <tr>
+                        <td>Neto </td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;border-top: none;text-align: right;">{{.NetValue}}</td>
+                    </tr>
+                    <tr>
+                        <td>Iva 19%</td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;text-align: right;">{{.Tax}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td style="border: 1px solid #BBBBBB;width: 70px;text-align: right;">{{.Total}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
